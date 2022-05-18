@@ -39,6 +39,7 @@ const info = document.getElementById("info");
 const prevBtn = document.querySelector(".prev-btn");
 const nextBtn = document.querySelector(".next-btn");
 const randomBtn = document.querySelector(".random-btn");
+let currentItem = 0;
 
 // show person function
 function showPerson(person) {
@@ -48,7 +49,10 @@ function showPerson(person) {
   job.textContent = item.job;
   info.textContent = item.text;
 }
-let currentItem = 0;
+//random number function
+function getRandomNumber() {
+  return Math.floor(Math.random() * reviews.length);
+}
 // load inital
 window.addEventListener("DOMContentLoaded", function () {
   showPerson(currentItem);
@@ -56,9 +60,19 @@ window.addEventListener("DOMContentLoaded", function () {
 
 nextBtn.addEventListener("click", function () {
   currentItem++;
+  if (currentItem > reviews.length - 1) {
+    currentItem = 0;
+  }
   showPerson(currentItem);
 });
 prevBtn.addEventListener("click", function () {
   currentItem--;
+  if (currentItem < 0) {
+    currentItem = 0;
+  }
+  showPerson(currentItem);
+});
+randomBtn.addEventListener("click", function () {
+  currentItem = getRandomNumber();
   showPerson(currentItem);
 });
