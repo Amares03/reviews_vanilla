@@ -40,4 +40,12 @@ const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
 const randomBtn = document.getElementById("random-btn");
 
+let currentItem = 0;
 // load inital
+window.addEventListener("DOMContentLoaded", function () {
+  const item = reviews[currentItem];
+  img.src = item.img;
+  author.textContent = item.name;
+  job.textContent = item.job;
+  info.textContent = item.text;
+});
